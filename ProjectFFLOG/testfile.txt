@@ -1,1 +1,0 @@
-Testname Europe Players: 2[Europe [Player: Tokiri Onigiri Role: DPS datacenter=Light, server=Phoenix], Europe [Player: Rimona Tayan Role: Healer datacenter=Chaos, server=Louisoix]][Europe [Player: Tokiri Onigiri Role: DPS datacenter=Light, server=Phoenix], Europe [Player: Rimona Tayan Role: Healer datacenter=Chaos, server=Louisoix]]
