@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: staticmaker
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_DATABASE:fflog}?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:1234}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: ${SHOW_SQL:false}
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    open-in-view: false
+
+  # DevTools
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+
+server:
+  port: ${WEB_PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:ChangeThisToAStrongSecretKeyWith256BitsMinimumForProductionUseGeneratedRandomly}
+  expiration: ${JWT_EXPIRATION:86400000} # 24 hours in milliseconds
+
+# FFLogs API Configuration
+# Get your API credentials from: https://www.fflogs.com/api/clients
+fflogs:
+  client:
+    id: ${FFLOGS_CLIENT_ID:#{null}}
+    secret: ${FFLOGS_CLIENT_SECRET:#{null}}
+
+# Actuator endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.fflog.staticmaker: ${LOG_LEVEL:DEBUG}
+    org.hibernate.SQL: ${SHOW_SQL:false}
+    org.hibernate.type.descriptor.sql.BasicBinder: ${SHOW_SQL:false}
